@@ -34,7 +34,7 @@ const Nav = () => {
             open ? "max-md:top-20" : "max-md:top-[-250px]"
           }`}>
           {navLinks.map((item) => (
-            <li key={item.label}>
+            <li key={item.label} onClick={() => setOpen(false)}>
               <a href={item.href} className="font-montserrat leading-normal text-lg text-slate-gray hover:text-black hover:font-medium">
                 {item.label}
               </a>
