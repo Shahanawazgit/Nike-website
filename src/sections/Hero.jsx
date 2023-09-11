@@ -17,12 +17,14 @@ const Hero = () => {
           <br />
           <span className="text-coral-red inline-block mt-3">Nike</span> Shoes
         </h1>
-        <p className="font-montserrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm">Discover stylish Nike arrivals, quality comfort, and innovation for your active life.</p>
+        <p className="font-montserrat text-slate-gray text-lg leading-8 mt-6 mb-14 sm:max-w-sm">
+          Discover stylish Nike arrivals, quality comfort, and innovation for your active life.
+        </p>
         <Button label="Shop Now" iconURL={arrowRight} />
 
         <div className="flex justify-start items-start flex-wrap w-full mt-20 gap-16">
-          {statistics.map((stat) => (
-            <div key={stat.label}>
+          {statistics.map((stat, ind) => (
+            <div key={ind}>
               <p className="text-4xl font-palanquin font-bold">{stat.value}</p>
               <p className="leading-7 font-montserrat text-slate-gray">{stat.label}</p>
             </div>
@@ -35,7 +37,7 @@ const Hero = () => {
 
         <div className="flex sm:gap-6 gap-4 absolute -bottom-[5%] sm:left-[10%] max-sm:px-6">
           {shoes.map((shoe) => (
-            <div key={shoe}>
+            <div key={shoe.bigShoe}>
               <ShoeCard imgURL={shoe} changeBigShoeImage={(shoe) => setBigShoeImage(shoe)} bigShoeImage={bigShoeImage} />
             </div>
           ))}

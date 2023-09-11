@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { headerLogo } from "../assets/images";
-import { hamburger } from "../assets/icons";
 import { navLinks } from "../constants/index";
 
 const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -28,7 +28,11 @@ const Nav = () => {
         <a href="/">
           <img src={headerLogo} alt="headerLogo" width={130} height={29} />
         </a>
-        <ul className="flex-1 flex justify-center items-center gap-16 max-lg:hidden">
+        <ul
+          id="navLinks"
+          className={`flex-1 flex justify-center items-center gap-16 max-lg:gap-10 max-md:flex-col max-md:absolute max-md:bg-white max-md:z-auto max-md:w-full max-md:right-16 max-md:items-end transition-all duration-500 ease-in ${
+            open ? "max-md:top-20" : "max-md:top-[-250px]"
+          }`}>
           {navLinks.map((item) => (
             <li key={item.label}>
               <a href={item.href} className="font-montserrat leading-normal text-lg text-slate-gray hover:text-black hover:font-medium">
@@ -37,8 +41,8 @@ const Nav = () => {
             </li>
           ))}
         </ul>
-        <div className="hidden max-lg:block">
-          <img src={hamburger} alt="hamberger" width={25} height={25} />
+        <div className="hidden max-md:block cursor-pointer" onClick={() => setOpen(!open)}>
+          <i className={`fa-solid fa-${open ? "xmark" : "bars"} fa-2x`}></i>
         </div>
       </nav>
     </header>
